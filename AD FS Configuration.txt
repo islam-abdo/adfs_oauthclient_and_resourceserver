@@ -1,0 +1,42 @@
+**Useful links for AD FS OAuth2 configuration:
+---
+
+http://www.gi-architects.co.uk/2016/04/setup-oauth2-on-adfs-3-0/
+https://auth0.com/docs/connections/enterprise/adfs
+https://developer.ibm.com/recipes/tutorials/oauth-2-0-with-ibm-api-connect-and-ad-fs-3-0/
+https://docs.pexip.com/admin/integrate_adfs.htm
+
+**AD FS Power Shell Commands:
+---
+
+Add ADFS client:
+--
+Add-AdfsClient -ClientId "oauth2-app-client" -Name "oauth2-app-client" -RedirectUri @("http://localhost:8083", "http://localhost:8083/login", "https://localhost:8446", "https://localhost:8446/login", "https://localhost:8446/oauthexample", "http://localhost:8080/web-app", "http://localhost:8080/login") -Description "OAuth 2.0 client for our spring boot application"
+
+Get ADFS client:
+--
+Get-AdfsClient -ClientId "oauth2-app-client"
+
+Remove ADFS client:
+--
+Remove-AdfsClient -TargetClientId "oauth2-app-client"
+
+**Some AD FS Info
+---
+
+display name: 
+	oauth_app
+claim rule name: 
+	oauth_claim_rule
+claim rule:
+	c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname", Issuer == "AD AUTHORITY"]
+=> issue(store = "Active Directory", types = ("email", "object_guid", "first_name", "last_name", "display_name"), query = ";mail,objectGUID,givenName,sn,displayName;{0}", param = c.Value);
+Federation Service Name:
+	WIN-U1MOKU0DM3T.Mazeed.Localhost
+Federation Service Identifier:
+	http://WIN-U1MOKU0DM3T.Mazeed.Localhost/adfs/services/trust
+
+
+
+
+
