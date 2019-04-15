@@ -1,0 +1,21 @@
+security:
+  basic:
+    enabled: false
+  oauth2:
+    client:
+      clientId: oauth2-app-client
+    resource:
+      userInfoUri: https://Mazeed-WIN-U1MOKU0DM3T-CA/adfs/oauth2/token
+
+logging:
+  level:
+    com.example.demo: TRACE
+    org.springframework.security: TRACE
+
+server:
+  port: 8082
+  
+#client:
+#    ssl:
+#        truststore: file:classpath:adfs_access_token_certificate.cer
+        #trustStorePassword: 123456
